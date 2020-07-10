@@ -13,11 +13,7 @@ Needless to say, you need the Xlib header files to build xlf.
 Installation
 ------------
 
-Edit the Makefile to your liking, if you so please.
-
 xlf is installed into ~/bin by default. Unless changed, do not run make as root.
-
-Build and install with:
 
     $ make clean install
 
@@ -33,8 +29,6 @@ available fonts.
 
 For details on the XListFonts() pattern string, see:
 https://www.x.org/releases/X11R7.5/doc/man/man3/XListFonts.3.html
-
-Examples:
 
     $ xlf
     $ xlf "*iso8859??"
