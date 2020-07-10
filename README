@@ -1,0 +1,56 @@
+xlf - x list fonts
+------------------
+
+xlf is a teeny-weeny helper to list available fonts returned by XListFonts().
+
+
+Requirements
+------------
+
+Needless to say, you need the Xlib header files to build xlf.
+
+
+Installation
+------------
+
+Edit the Makefile to your liking, if you so please.
+
+xlf is installed into ~/bin by default. Unless changed, do not run make as root.
+
+Build and install with:
+
+    $ make clean install
+
+
+Usage
+-----
+
+xlf takes one optional pattern string argument that is case-insensitive and
+can contain wildcard characters.
+
+If no argument is passed, a single asterisk wildcard is used to find all
+available fonts.
+
+For details on the XListFonts() pattern string, see:
+https://www.x.org/releases/X11R7.5/doc/man/man3/XListFonts.3.html
+
+Examples:
+
+    $ xlf
+    $ xlf "*iso8859??"
+    $ xlf "-xos4-terminus-medium-r-normal*"
+    $ xlf "*bold*"
+    $ xlf "fixed"
+
+
+Why on earth
+------------
+
+I was playing around with X and needed to know which fonts were available.
+
+
+Credits
+-------
+
+Based on examples found in:
+Pavlidis, T 2002, Fundamentals of X Programming, Springer US, New York.
