@@ -1,5 +1,5 @@
 xlf - x list fonts
-------------------
+==================
 
 xlf is a teeny-weeny helper to list available fonts returned by XListFonts().
 
@@ -7,13 +7,13 @@ xlf is a teeny-weeny helper to list available fonts returned by XListFonts().
 Requirements
 ------------
 
-Needless to say, you need the Xlib header files to build xlf.
+You need the Xlib header files.
 
 
 Installation
 ------------
 
-xlf is installed into ~/bin by default. Unless changed, do not run make as root.
+DESTDIR and PREFIX are supported.
 
     $ make clean install
 
