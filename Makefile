@@ -1,8 +1,8 @@
 LIBS   = -lX11
-CFLAGS := -std=c99 -g -Wall -Wextra
-PREFIX ?= $(HOME)
+CFLAGS := -std=c99 -Wall -Wextra -pedantic -Os
+PREFIX ?= /usr
 BINDIR ?= $(PREFIX)/bin
-CC     ?= gcc
+CC ?= gcc
 
 all: xlf
 
@@ -10,7 +10,8 @@ xlf: xlf.o
 	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
 
 install: all
-	install -Dm755 xlf $(DESTDIR)$(BINDIR)/xlf
+	install -d $(DESTDIR)$(BINDIR)
+	install -m 755 xlf $(DESTDIR)$(BINDIR)
 
 uninstall:
 	rm -f $(DESTDIR)$(BINDIR)/xlf
