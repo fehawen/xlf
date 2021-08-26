@@ -1,30 +1,26 @@
-#include <X11/Xlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <X11/Xlib.h>
 
-int main(int argc, char *argv[]) {
-    Display *d;
-    char **cp, **cp0;
-    int i, c;
+int main(int argc, char *argv[])
+{
+	Display *display;
+	char **font, **copy;
+	int i, count;
 
-    d = XOpenDisplay(NULL);
+	if (!(display = XOpenDisplay(0)))
+		exit(1);
 
-    if (d == NULL) {
-        fprintf(stderr, "Cannot open display\n");
-        return(-1);
-    }
+	font = copy = XListFonts(display, argc > 1 ? argv[1] : "*", 256, &count);
 
-    cp = cp0 = XListFonts(d, argc > 1 ? argv[1] : "*", 256, &c);
+	printf("Found %d font matches.\n", count);
 
-    printf("Found %i font matches.\n", c);
+	for (i = 0; i < count; i++, font++)
+		printf("%s\n", *font);
 
-    for (i = 0; i < c; i++, cp++) {
-        printf("%s\n", *cp);
-    }
+    if (count)
+		XFreeFontNames(copy);
 
-    if (c) {
-        XFreeFontNames(cp0);
-    }
-
-    XCloseDisplay(d);
-    return 0;
+	XCloseDisplay(display);
+	return 0;
 }
